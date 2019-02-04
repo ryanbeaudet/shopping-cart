@@ -99,9 +99,19 @@ def receipt_print(ids_for_print):
     while ( i < len(ids_for_print)):
         matching_products = [p for p in products if p["id"] == ids_for_print[i]]
         product = matching_products[0]
-        print("+ " + product["name"] + " (" + str(product["price"]) + ")")
+        print("+ " + product["name"] + " (" + str('${:,.2f}'.format(product["price"])) + ")")
         running_total = running_total + product["price"]
         i = i + 1
+    print("Subtotal: " + str('${:,.2f}'.format(running_total)))
+    tax = tax_calc(running_total)
+    print("Plus NYC Sales Tax (8.875%): " + str('${:,.2f}'.format(tax)))
+    running_total = running_total + tax
+    print("Total: " + str('${:,.2f}'.format(running_total)))
+    
+
+def tax_calc(subtotal):
+    tax = subtotal * (1.08875)
+    return tax
 
 receipt_print(this_list)
 
