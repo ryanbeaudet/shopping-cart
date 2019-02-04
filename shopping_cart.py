@@ -91,7 +91,7 @@ def receipt_print(ids_for_print):
     print("Web: www.ryans.com")
     print("Phone: 1.908.555.5555")
     d = datetime.datetime.now()
-    print("'Checkout time: " + str(d.year) + "-" + str(d.month) + "-" + str(d.day) + " " + str(d.hour) + ":" + str(d.minute) + ":" + str(d.second))
+    print("Checkout time: " + str(d.year) + "-" + str(d.month) + "-" + str(d.day) + " " + str(d.hour) + ":" + str(d.minute) + ":" + str(d.second))
     print("-------------------------")
     print("Shopping Cart Items:")
     i = 0
@@ -107,6 +107,7 @@ def receipt_print(ids_for_print):
     print("Plus NYC Sales Tax (8.875%): " + str('${:,.2f}'.format(tax)))
     running_total = running_total + tax
     print("Total: " + str('${:,.2f}'.format(running_total)))
+    print("Thanks for your business! Please come again!")
     
 
 def tax_calc(subtotal):
