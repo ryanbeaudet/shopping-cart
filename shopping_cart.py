@@ -40,28 +40,37 @@ still_shopping = True
         #break
     #print(current_id)
 
-shopping_cart = [1, 2, 3, 4, 5]
+def tax_calc(subtotal):
+    tax = subtotal * (1.08875)
+    return tax
 
-#while True:
-    #current_id = input("Please input a product id (if finished shopping, type 'DONE'): ")
-    #shopping_cart.append(current_id)
-    #if current_id == "DONE":
-        #print("Shopping cart identifiers include: [", end="")
-        #for s in shopping_cart: 
-            #print(str(s), end="")
-            #if s == shopping_cart[-2]:
-                #break
-            #else:
-                #print(", ", end="")
-        #print("]", end="")
-        #break    
-    
-this_list = [5, 4, 3, 2, 1]
+def receipt_print(selected_ids):
+    print("-------------------------")
+    print("Ryan's Grocery Store")
+    print("-------------------------")
+    print("Web: www.ryans.com")
+    print("Phone: 1.908.555.5555")
+    d = datetime.datetime.now()
+    print("Checkout time: " + str(d.year) + "-" + str(d.month) + "-" + str(d.day) + " " + str(d.hour) + ":" + str(d.minute) + ":" + str(d.second))
+    print("-------------------------")
+    print("Shopping Cart Items:")
+    i = 0
+    running_total = 0
+    while ( i < len(selected_ids)):
+        matching_products = [p for p in products if p["id"] == selected_ids[i]]
+        product = matching_products[0]
+        print("+ " + product["name"] + " (" + '${:,.2f}'.format(product["price"]) + ")")
+        running_total = running_total + product["price"]
+        i = i + 1
+    print("Subtotal: " + str('${:,.2f}'.format(running_total)))
+    tax = tax_calc(running_total)
+    print("Plus NYC Sales Tax (8.875%): " + str('${:,.2f}'.format(tax)))
+    running_total = running_total + tax
+    print("Total: " + str('${:,.2f}'.format(running_total)))
+    print("Thank you for your business! Please come again!")
 
-#def product_lookup(selected_id):
-    #matching_products = [p for p in products if p["id"] == selected_id]
-    #product = matching_products[0]
-    #print(product["name"] + " (" + str(product["price"]) + ")")
+
+shopping_cart = []
 
 def product_lookup(selected_ids):
     i = 0
@@ -74,47 +83,59 @@ def product_lookup(selected_ids):
         else:
             print(", ", end="")
     print("]")
-    while ( i < len(selected_ids)):
+    
+    for i in range(0, len(selected_ids)):
         matching_products = [p for p in products if p["id"] == selected_ids[i]]
-        product = matching_products[0]
-        print("+ " + product["name"] + " (" + str(product["price"]) + ")")
-        running_total = running_total + product["price"]
+        
+        item = matching_products[0]
+        print("+ " + item["name"] + " (" + str(item["price"]) + ")")
+        running_total = running_total + item["price"]
         i = i + 1
     print( "Total Price: " + str(running_total))
 
-#product_lookup(this_list)
+this_list = [5, 4, 3, 2, 1]
 
-def receipt_print(ids_for_print):
-    print("-------------------------")
-    print("Ryan's Grocery Store")
-    print("-------------------------")
-    print("Web: www.ryans.com")
-    print("Phone: 1.908.555.5555")
-    d = datetime.datetime.now()
-    print("Checkout time: " + str(d.year) + "-" + str(d.month) + "-" + str(d.day) + " " + str(d.hour) + ":" + str(d.minute) + ":" + str(d.second))
-    print("-------------------------")
-    print("Shopping Cart Items:")
-    i = 0
-    running_total = 0
-    while ( i < len(ids_for_print)):
-        matching_products = [p for p in products if p["id"] == ids_for_print[i]]
-        product = matching_products[0]
-        print("+ " + product["name"] + " (" + str('${:,.2f}'.format(product["price"])) + ")")
-        running_total = running_total + product["price"]
-        i = i + 1
-    print("Subtotal: " + str('${:,.2f}'.format(running_total)))
-    tax = tax_calc(running_total)
-    print("Plus NYC Sales Tax (8.875%): " + str('${:,.2f}'.format(tax)))
-    running_total = running_total + tax
-    print("Total: " + str('${:,.2f}'.format(running_total)))
-    print("Thanks for your business! Please come again!")
+while True:
+    current_id = input("Please input a product id (if finished shopping, type 'DONE'): ")
+    if current_id != 'DONE':
+        shopping_cart.append(int(current_id))
+    #if current_id == "DONE":
+        #print("Shopping cart identifiers include: [", end="")
+        #for s in shopping_cart: 
+            #print(str(s), end="")
+            #if s == shopping_cart[-2]:
+                #break
+            #else:
+                #print(", ", end="")
+        #print("]", end="")
+        #break
+    if current_id == "DONE":
+        receipt_print(shopping_cart)
+        #print(shopping_cart[0])
+        #for s in shopping_cart:
+            #print(s[0])
+        break   
     
 
-def tax_calc(subtotal):
-    tax = subtotal * (1.08875)
-    return tax
 
-receipt_print(this_list)
+#def product_lookup(selected_id):
+    #matching_products = [p for p in products if p["id"] == selected_id]
+    #product = matching_products[0]
+    #print(product["name"] + " (" + str(product["price"]) + ")")
+
+
+
+#product_lookup(this_list)
+
+
+
+
+
+    
+
+
+
+#receipt_print(this_list)
 
 #running_total = 0
 
