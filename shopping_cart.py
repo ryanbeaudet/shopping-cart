@@ -82,10 +82,28 @@ def product_lookup(selected_ids):
         i = i + 1
     print( "Total Price: " + str(running_total))
 
-product_lookup(this_list)
+#product_lookup(this_list)
 
+def receipt_print(ids_for_print):
+    print("-------------------------")
+    print("Ryan's Grocery Store")
+    print("-------------------------")
+    print("Web: www.ryans.com")
+    print("Phone: 1.908.555.5555")
+    d = datetime.datetime.now()
+    print("'Checkout time: " + str(d.year) + "-" + str(d.month) + "-" + str(d.day) + " " + str(d.hour) + ":" + str(d.minute) + ":" + str(d.second))
+    print("-------------------------")
+    print("Shopping Cart Items:")
+    i = 0
+    running_total = 0
+    while ( i < len(ids_for_print)):
+        matching_products = [p for p in products if p["id"] == ids_for_print[i]]
+        product = matching_products[0]
+        print("+ " + product["name"] + " (" + str(product["price"]) + ")")
+        running_total = running_total + product["price"]
+        i = i + 1
 
-
+receipt_print(this_list)
 
 #running_total = 0
 
