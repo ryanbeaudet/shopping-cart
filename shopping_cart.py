@@ -41,7 +41,7 @@ still_shopping = True
     #print(current_id)
 
 def tax_calc(subtotal):
-    tax = subtotal * (1.08875)
+    tax = subtotal * (0.06)
     return tax
 
 def receipt_print(selected_ids):
@@ -62,12 +62,15 @@ def receipt_print(selected_ids):
         print("+ " + product["name"] + " (" + '${:,.2f}'.format(product["price"]) + ")")
         running_total = running_total + product["price"]
         i = i + 1
+    print("-------------------------")
     print("Subtotal: " + str('${:,.2f}'.format(running_total)))
     tax = tax_calc(running_total)
-    print("Plus NYC Sales Tax (8.875%): " + str('${:,.2f}'.format(tax)))
+    print("Plus DC Sales Tax (6.0%): " + str('${:,.2f}'.format(tax)))
     running_total = running_total + tax
     print("Total: " + str('${:,.2f}'.format(running_total)))
-    print("Thank you for your business! Please come again!")
+    print("-------------------------")
+    print("Thank you for shopping with us!")
+    print("-------------------------")
 
 
 shopping_cart = []
@@ -95,6 +98,8 @@ def product_lookup(selected_ids):
 
 this_list = [5, 4, 3, 2, 1]
 
+
+#MAIN TEXT
 while True:
     current_id = input("Please input a product id (if finished shopping, type 'DONE'): ")
     if current_id != 'DONE':
