@@ -102,8 +102,18 @@ this_list = [5, 4, 3, 2, 1]
 #MAIN TEXT
 while True:
     current_id = input("Please input a product id (if finished shopping, type 'DONE'): ")
-    if current_id != 'DONE':
+    if current_id == "DONE":
+        receipt_print(shopping_cart)
+        break
+    elif (int(current_id) >= 1 & int(current_id) <= 20):
         shopping_cart.append(int(current_id))
+        #print(shopping_cart[0])
+        #for s in shopping_cart:
+            #print(s[0]) 
+    else:
+        print("Not a viable product number. Please try again!")
+
+        
     #if current_id == "DONE":
         #print("Shopping cart identifiers include: [", end="")
         #for s in shopping_cart: 
@@ -114,12 +124,7 @@ while True:
                 #print(", ", end="")
         #print("]", end="")
         #break
-    if current_id == "DONE":
-        receipt_print(shopping_cart)
-        #print(shopping_cart[0])
-        #for s in shopping_cart:
-            #print(s[0])
-        break   
+      
     
 
 
