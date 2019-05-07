@@ -1,4 +1,5 @@
 from shopping_cart import *
+import pytest
 
 def test_to_usd():
     assert to_usd(7) == "$7.00"
@@ -26,10 +27,25 @@ def test_find_product():
         {"id":3, "name": "Sparkling Orange Juice & Prickly Pear Beverage", "department": "beverages", "aisle": "water seltzer sparkling water", "price": 2.99},
     ]
 
-    found_product = find_product(4, products)
+    found_product = find_product(products, 4)
 
-    assert found_product = {"id":4, "name": "Cut Russet Potatoes Steam N' Mash", "department": "frozen", "aisle": "frozen produce", "price": 4.25}
+    assert found_product == {"id":4, "name": "Cut Russet Potatoes Steam N' Mash", "department": "frozen", "aisle": "frozen produce", "price": 4.25}
 
-    
+    with pytest.raises(IndexError):
+        find_product(products, 6)
 
+def test_calculate_total_price():
+    products = [
+        {"id":1, "name": "Dry Nose Oil", "department": "personal care", "aisle": "cold flu allergy", "price": 21.99},
+        {"id":5, "name": "Pure Coconut Water With Orange", "department": "beverages", "aisle": "juice nectars", "price": 3.50},
+        {"id":4, "name": "Cut Russet Potatoes Steam N' Mash", "department": "frozen", "aisle": "frozen produce", "price": 4.25},
+        {"id":2, "name": "Light Strawberry Blueberry Yogurt", "department": "dairy eggs", "aisle": "yogurt", "price": 6.50},
+        {"id":3, "name": "Sparkling Orange Juice & Prickly Pear Beverage", "department": "beverages", "aisle": "water seltzer sparkling water", "price": 2.99},
+    ]
+
+    selected_ids = [1,3,2]
+
+    assert round(calculate_total_price(products, selected_ids), 2) == 31.48
+
+    assert calculate_total_price([], []) == 0
 
