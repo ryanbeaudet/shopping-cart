@@ -7,6 +7,14 @@ def to_usd(price):
 
 def human_friendly_timestamp(d):
     timestamp = str(d.year) + "-" + str(d.month) + "-" + str(d.day) + " " + str(d.hour) + ":" + str(d.minute) + ":" + str(d.second)
+    return timestamp
+
+
+def find_product(products, product_id):
+    matching_products = [p for p in products if str(p["id"]) == str(product_id)]
+    matching_product = matching_products
+    return matching_product
+
 
 if __name__ == "__main__":
     products = [
@@ -80,6 +88,7 @@ if __name__ == "__main__":
 
 
     shopping_cart = []
+    
 
     def product_lookup(selected_ids):
         i = 0
