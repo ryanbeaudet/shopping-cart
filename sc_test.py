@@ -1,4 +1,4 @@
-from shopping_cart.py import *
+from shopping_cart import *
 
 def test_to_usd():
     assert to_usd(7) == "$7.00"
