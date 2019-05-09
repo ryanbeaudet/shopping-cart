@@ -2,18 +2,21 @@
 
 import datetime
 
+#used in previous projects
 def to_usd(price):
     return "${0:,.2f}".format(price)
+
 
 def human_friendly_timestamp(d):
     timestamp = str(d.year) + "-" + str(d.month) + "-" + str(d.day) + " " + str(d.hour) + ":" + str(d.minute) + ":" + str(d.second)
     return timestamp
 
-
+#adapted from https://github.com/s2t2/shopping-cart-screencast/blob/testing/shopping_cart.py
 def find_product(products, product_id):
     matching_products = [p for p in products if str(p["id"]) == str(product_id)]
     matching_product = matching_products[0]
     return matching_product
+
 
 def calculate_total_price(products, selected_ids):
     running_total = 0
@@ -24,6 +27,7 @@ def calculate_total_price(products, selected_ids):
         i = i + 1
     return running_total
 
+#adapted from https://github.com/s2t2/shopping-cart-screencast/blob/testing/shopping_cart.py
 def receipt_print(selected_ids):
     print("-------------------------")
     print("Ryan's Grocery Store")
@@ -43,13 +47,13 @@ def receipt_print(selected_ids):
     print("-------------------------")
     print("Subtotal: " + str(to_usd(running_total)))
     tax = tax_calc(running_total)
-    #print("Plus DC Sales Tax (6.0%): " + tax)))
     running_total = running_total + tax
     print("Total: " + str(to_usd(running_total)))
     print("-------------------------")
     print("Thank you for shopping with us!")
     print("-------------------------")
 
+'''
 def product_lookup(selected_ids):
     i = 0
     running_total = 0
@@ -71,7 +75,7 @@ def product_lookup(selected_ids):
         i = i + 1
     print( "Total Price: " + str(running_total))
 
-
+'''
 
 if __name__ == "__main__":
     products = [
@@ -97,8 +101,7 @@ if __name__ == "__main__":
         {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
     ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-    # TODO: write some Python code here to produce the desired functionality...
-    #print(products)
+    
 
 
     
@@ -123,7 +126,7 @@ if __name__ == "__main__":
 
     
 
-    #this_list = [5, 4, 3, 2, 1]
+ 
 
 
     #MAIN TEXT
@@ -141,64 +144,5 @@ if __name__ == "__main__":
             print("Not a viable product number. Please try again!")
 
       
-        #if current_id == "DONE":
-            #print("Shopping cart identifiers include: [", end="")
-            #for s in shopping_cart: 
-                #print(str(s), end="")
-                #if s == shopping_cart[-2]:
-                    #break
-                #else:
-                    #print(", ", end="")
-            #print("]", end="")
-            #break
-        
-        
-
-
-    #def product_lookup(selected_id):
-        #matching_products = [p for p in products if p["id"] == selected_id]
-        #product = matching_products[0]
-        #print(product["name"] + " (" + str(product["price"]) + ")")
-
-
-
-    #product_lookup(this_list)
-
-
-
-
-
-        
-
-
-
-    #receipt_print(this_list)
-
-    #running_total = 0
-
-    #t = 0
-
-    #while t < 5:
-        #selected_id = 1 #input("Please select a product id (1-20): ")
-    # product = {
-        #    "id":1
-        #   "name": "Chocolate Sandwich Cookies",
-        #  "department": "snacks",
-        # "aisle": "cookie cakes",
-            #"price": 3.50
-        #}
-        #matching_products = [p for p in products if p["id"] == selected_id]
-        #product = matching_products[0]
-        #price = product["price"] # todo: lookup atual price of the scanned product
-        #running_total = running_total + price
-        #t = t + 1
-
-
-    #print("The total price is: " + str(running_total))
-
-    #todo: calculate tax, add tax + total
-
-    #q = datetime.datetime.now()
-
-    #print("Started at: " + str(q))
+  
 
