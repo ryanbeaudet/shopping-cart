@@ -1,6 +1,7 @@
 from shopping_cart import *
 import pytest
 
+#adapted from https://github.com/s2t2/shopping-cart-screencast/blob/testing/shopping_cart_test.py
 def test_to_usd():
     assert to_usd(7) == "$7.00"
 
@@ -17,7 +18,7 @@ def test_human_friendly_timestamp():
     d = datetime.datetime(2019, 5, 7, 12, 47, 25)
     assert human_friendly_timestamp(d) == "2019-05-07 12:47 PM"
 
-
+#adapted from https://github.com/s2t2/shopping-cart-screencast/blob/testing/shopping_cart_test.py
 def test_find_product():
     products = [
         {"id":1, "name": "Dry Nose Oil", "department": "personal care", "aisle": "cold flu allergy", "price": 21.99},
