@@ -6,10 +6,11 @@ import datetime
 def to_usd(price):
     return "${0:,.2f}".format(price)
 
-
+#adapted from https://github.com/s2t2/shopping-cart-screencast/blob/testing/shopping_cart.py
 def human_friendly_timestamp(d):
-    timestamp = str(d.year) + "-" + str(d.month) + "-" + str(d.day) + " " + str(d.hour) + ":" + str(d.minute) + ":" + str(d.second)
-    return timestamp
+    timestamp = d.strftime('%Y-%m-%d %I:%M %p')
+    #timestamp = str(d.year) + "-" + str(d.month) + "-" + str(d.day) + " " + str(d.hour) + ":" + str(d.minute) + ":" + str(d.second)
+    return str(timestamp)
 
 #adapted from https://github.com/s2t2/shopping-cart-screencast/blob/testing/shopping_cart.py
 def find_product(products, product_id):
@@ -17,7 +18,7 @@ def find_product(products, product_id):
     matching_product = matching_products[0]
     return matching_product
 
-
+#I did this part on my own, but the original part was adapted from the screencast
 def calculate_total_price(products, selected_ids):
     running_total = 0
     for i in range(0, len(selected_ids)):
