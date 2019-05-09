@@ -15,7 +15,7 @@ def test_to_usd():
 
 def test_human_friendly_timestamp():
     d = datetime.datetime(2019, 5, 7, 12, 47, 25)
-    assert human_friendly_timestamp(d) == "2019-5-7 12:47:25"
+    assert human_friendly_timestamp(d) == "2019-05-07 12:47 PM"
 
 
 def test_find_product():

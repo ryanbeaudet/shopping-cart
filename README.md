@@ -18,6 +18,8 @@ Run the shopping cart script:
 python shopping_cart.py
 ```
 
+Enter in the IDs for the items that you would like to include in your shopping cart. Check out and enjoy!
+
 ## Testing
 
 ```
